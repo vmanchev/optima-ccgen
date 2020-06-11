@@ -1,6 +1,7 @@
-const ccgen = require("../index.js");
+import generateCcNumber from "./index";
+import isValidCcNumber from "./index";
 
-var cc = new ccgen().generate(1313, 12);
+var ccnum = generateCcNumber(1313, 16, true);
 
-console.log(cc);
-console.log(new ccgen().isValid(cc));
+console.log(ccnum);
+console.log(isValidCcNumber(ccnum));
