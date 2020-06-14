@@ -43,13 +43,13 @@ function isValidCcNumber(number) {
   return verificationDigit(number) == lastDigit;
 }
 
-multiplyNumber = function (number) {
+function multiplyNumber(number) {
   var result = number * 2;
 
   return result > 9 ? result - 9 : result;
-};
+}
 
-getRandomNumber = function (length) {
+function getRandomNumber(length) {
   var rand = [];
 
   for (let i = 1; i < length; i++) {
@@ -57,21 +57,21 @@ getRandomNumber = function (length) {
   }
 
   return rand.join("");
-};
+}
 
-getRandomInt = function (min, max) {
+function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
-};
+}
 
-verificationDigit = function (number) {
+function verificationDigit(number) {
   var mod = sum(number) % 10;
 
   return 10 - (mod ? mod : 10);
-};
+}
 
-sum = function (number) {
+function sum(number) {
   var numbers = number.split("").reverse();
 
   var sum = 0;
@@ -82,7 +82,7 @@ sum = function (number) {
   }
 
   return sum;
-};
+}
 
 exports.generateCcNumber = generateCcNumber;
 exports.isValidCcNumber = isValidCcNumber;

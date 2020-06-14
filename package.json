@@ -1,9 +1,8 @@
 {
   "name": "optima-ccgen",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Credit card number generator and validator",
   "main": "index.js",
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/vmanchev/optima-ccgen.git"
