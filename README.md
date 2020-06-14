@@ -15,7 +15,7 @@ npm install optima-ccgen --save
 ## Generate a new credit card -like number
 
 ```
-import generateCcNumber from "optima-ccgen";
+import { generateCcNumber } from "optima-ccgen";
 
 generateCcNumber(1313, 16, true); // 1313 8291 8789 9580
 
@@ -31,11 +31,13 @@ generateCcNumber(1313, 16, true); // 1313 8291 8789 9580
 ## Validate a credit card -like number
 
 ```
-import isValidCcNumber from "optima-ccgen";
+import { isValidCcNumber } from "optima-ccgen";
 
 isValidCcNumber('1313829187899580'); // true
 ```
 
 **isValidCcNumber(number)**
 
-- _number_ - numeric sequence to be validated against Luhn algorythm
+- _number_ - numeric sequence to be validated against Luhn algorythm.
+  If a formatted number is passed as argument, empty spaces will be
+  removed and then the result will be validated.

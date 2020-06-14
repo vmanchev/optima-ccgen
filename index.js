@@ -33,12 +33,14 @@ function formatCcNumber(number) {
  * Whether or not a given number validates against Luhn algorithm
  *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
- * @param {number} number
+ * @param {string} number
  * @returns {boolean}
  */
 function isValidCcNumber(number) {
+  number = number.replace(/\D+/, "");
+
   var lastDigit = number.slice(-1);
-  var number = number.slice(0, -1);
+  number = number.slice(0, -1);
 
   return verificationDigit(number) == lastDigit;
 }
@@ -66,7 +68,7 @@ function getRandomInt(min, max) {
 }
 
 function verificationDigit(number) {
-  var mod = sum(number) % 10;
+  var mod = sum(parseInt(number, 10)) % 10;
 
   return 10 - (mod ? mod : 10);
 }
