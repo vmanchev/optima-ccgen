@@ -36,7 +36,7 @@ function formatCcNumber(number) {
  * @returns {boolean}
  */
 function isValidCcNumber(value) {
-  value = value.replace(/\D+/, "");
+  value = value.replace(/\D+/g, "");
 
   var lastDigit = value.slice(-1);
   value = value.slice(0, -1);
