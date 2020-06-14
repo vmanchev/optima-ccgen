@@ -67,7 +67,7 @@ function getRandomInt(min, max) {
 }
 
 function verificationDigit(number) {
-  var mod = sum(parseInt(number, 10)) % 10;
+  var mod = sum(number) % 10;
 
   return 10 - (mod ? mod : 10);
 }
