@@ -17,11 +17,12 @@ npm install optima-ccgen --save
 ```
 import { generateCcNumber } from "optima-ccgen";
 
-generateCcNumber(1313, 16, true); // 1313 8291 8789 9580
+generateCcNumber(1313, 16, true); // "1313 8291 8789 9580"
+generateCcNumber(1313, 16); // "1313829187899580"
 
 ```
 
-**generateCcNumber(prefix: string | number, length: string | number, [formatted:boolean = false])**
+**generateCcNumber(prefix: string | number, length: string | number, [formatted:boolean = false]): string**
 
 - _prefix_ - digits to be prepended to the final result;
 - _length_ - length of the final result, including the prefix;
@@ -36,7 +37,7 @@ import { isValidCcNumber } from "optima-ccgen";
 isValidCcNumber(1313829187899580); // true
 ```
 
-**isValidCcNumber(value: string | number)**
+**isValidCcNumber(value: string | number): boolean**
 
 - _value_ - numeric sequence to be validated against Luhn algorythm.
   If a formatted number is passed as argument, empty spaces will be
@@ -46,8 +47,10 @@ isValidCcNumber(1313829187899580); // true
 
 ```
 import { formatCcNumber } from 'optima-ccgen';
+
+formatCcNumber("1234567898765432") // "1234 5678 9876 5432"
 ```
 
-**formatCcNumber(value: string | number)**
+**formatCcNumber(value: string | number): string**
 
 - _value_ - value to be formatted.
