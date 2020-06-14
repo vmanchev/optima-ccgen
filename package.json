@@ -1,10 +1,10 @@
 {
   "name": "optima-ccgen",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Credit card number generator and validator",
   "scripts": {
     "build": "tsc",
-    "publish": "npm run build && npm publish",
+    "build:publish": "npm run build && npm publish",
     "test": "cross-env TS_NODE_COMPILER_OPTIONS='{ \"module\": \"commonjs\" }' mocha -r ts-node/register src/**/*.spec.ts",
     "coverage": "nyc npm run test"
   },
