@@ -1,7 +1,13 @@
 # Credit card -like number generator
 
-This package exposes two methods - **generateCcNumber** and **isValidCcNumber**.
-It is based on Luhn_algorithm, used to generates and validates credit card numbers.
+Use this package to:
+
+- generate credit card alike numbers;
+- validate credit card alike numbers;
+- format credit card alike numbers;
+
+This package exposes three methods - **generateCcNumber**, **isValidCcNumber** and **formatCcNumber**.
+It is based on [Luhn algorithm](https://en.wikipedia.org/wiki/Luhn_algorithm), used to generates and validates credit card numbers.
 Of couse, one can use it for any other purpose such as client codes, gift card codes, etc.
 Or in other words - when you don't need a sequential numbers, but rather a way to
 verify the integrity of the provided numerical string.
