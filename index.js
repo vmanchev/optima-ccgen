@@ -13,7 +13,7 @@
  * @returns {string}
  */
 function generateCcNumber(prefix, length, formatted = false) {
-  prefix = predix.toString();
+  prefix = prefix.toString();
   length = parseInt(length, 10);
 
   var number = prefix + getRandomNumber(length - prefix.length);
