@@ -12,13 +12,14 @@
  * be formatted with a space after every 4 characters or not.
  * @returns {string}
  */
-function generateCcNumber(prefix, length, formatted = false) {
-  prefix = prefix.toString();
-  length = parseInt(length, 10);
+export function generateCcNumber(
+  prefix: string,
+  length: number,
+  formatted: boolean = false
+): string {
+  const number = prefix + getRandomNumber(length - prefix.length);
 
-  var number = prefix + getRandomNumber(length - prefix.length);
-
-  var ccNumber = number.toString() + verificationDigit(number);
+  let ccNumber = number + verificationDigit(number);
 
   return formatted ? formatCcNumber(ccNumber) : ccNumber;
 }
@@ -26,14 +27,11 @@ function generateCcNumber(prefix, length, formatted = false) {
 /**
  * Inserts an empty space after every 4th element
  *
- * @param {string | number} value
+ * @param {string} value
  * @returns {string}
  */
-function formatCcNumber(value) {
-  return value
-    .toString()
-    .replace(/(.{4})/g, "$& ")
-    .trim();
+export function formatCcNumber(value: string): string {
+  return value.replace(/(.{4})/g, "$& ").trim();
 }
 
 /**
@@ -42,25 +40,25 @@ function formatCcNumber(value) {
  * Whether or not a given number validates against Luhn algorithm
  *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
- * @param {string | number} value
+ * @param {string} value
  * @returns {boolean}
  */
-function isValidCcNumber(value) {
-  value = value.toString().replace(/\D+/g, "");
+export function isValidCcNumber(value: string): boolean {
+  value = value.replace(/\D+/g, "");
 
-  var lastDigit = value.slice(-1);
+  var lastDigit = parseInt(value.slice(-1), 10);
   value = value.slice(0, -1);
 
   return verificationDigit(value) == lastDigit;
 }
 
-function multiplyNumber(number) {
-  var result = number * 2;
+function multiplyNumber(value: number): number {
+  var result = value * 2;
 
   return result > 9 ? result - 9 : result;
 }
 
-function getRandomNumber(length) {
+function getRandomNumber(length: number): string {
   var rand = [];
 
   for (let i = 1; i < length; i++) {
@@ -70,19 +68,19 @@ function getRandomNumber(length) {
   return rand.join("");
 }
 
-function getRandomInt(min, max) {
+function getRandomInt(min: number, max: number): number {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
-function verificationDigit(number) {
+function verificationDigit(number: string): number {
   var mod = sum(number) % 10;
 
   return 10 - (mod ? mod : 10);
 }
 
-function sum(number) {
+function sum(number: string): number {
   var numbers = number.split("").reverse();
 
   var sum = 0;
@@ -94,7 +92,3 @@ function sum(number) {
 
   return sum;
 }
-
-exports.generateCcNumber = generateCcNumber;
-exports.isValidCcNumber = isValidCcNumber;
-exports.formatCcNumber = formatCcNumber;
