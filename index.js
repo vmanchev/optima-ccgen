@@ -5,7 +5,7 @@
  *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
  *
- * @param {number} prefix Number to prepend.
+ * @param {string} prefix Number to prepend.
  * @param {number} length Required total length of
  * the generated number, including the preffix length.
  * @param {boolean} formatted Should the result number
@@ -13,7 +13,6 @@
  * @returns {string}
  */
 function generateCcNumber(prefix, length, formatted = false) {
-  prefix = prefix.toString();
   length = parseInt(length, 10);
 
   var number = prefix + getRandomNumber(length - prefix.length);
@@ -36,13 +35,13 @@ function formatCcNumber(number) {
  * @param {string} number
  * @returns {boolean}
  */
-function isValidCcNumber(number) {
-  number = number.replace(/\D+/, "");
+function isValidCcNumber(value) {
+  value = value.replace(/\D+/, "");
 
-  var lastDigit = number.slice(-1);
-  number = number.slice(0, -1);
+  var lastDigit = value.slice(-1);
+  value = value.slice(0, -1);
 
-  return verificationDigit(number) == lastDigit;
+  return verificationDigit(value) == lastDigit;
 }
 
 function multiplyNumber(number) {

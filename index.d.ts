@@ -1,6 +1,6 @@
 export declare function generateCcNumber(
-  prefix: number,
+  prefix: string,
   length: number,
-  formatted = false
-): boolean;
-export declare function isValidCcNumber(number: number): boolean;
+  formatted: boolean
+): string;
+export declare function isValidCcNumber(value: string): boolean;
