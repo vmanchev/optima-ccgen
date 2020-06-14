@@ -4,3 +4,4 @@ export declare function generateCcNumber(
   formatted?: boolean
 ): string;
 export declare function isValidCcNumber(value: string): boolean;
+export declare function formatCcNumber(value: string): string;
