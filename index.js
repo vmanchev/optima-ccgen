@@ -13,6 +13,7 @@
  * @returns {string}
  */
 function generateCcNumber(prefix, length, formatted = false) {
+  prefix = predix.toString();
   length = parseInt(length, 10);
 
   var number = prefix + getRandomNumber(length - prefix.length);
@@ -22,8 +23,17 @@ function generateCcNumber(prefix, length, formatted = false) {
   return formatted ? formatCcNumber(ccNumber) : ccNumber;
 }
 
-function formatCcNumber(number) {
-  return number.replace(/(.{4})/g, "$& ").trim();
+/**
+ * Inserts an empty space after every 4th element
+ *
+ * @param {string | number} value
+ * @returns {string}
+ */
+function formatCcNumber(value) {
+  return value
+    .toString()
+    .replace(/(.{4})/g, "$& ")
+    .trim();
 }
 
 /**
@@ -32,11 +42,11 @@ function formatCcNumber(number) {
  * Whether or not a given number validates against Luhn algorithm
  *
  * @see https://en.wikipedia.org/wiki/Luhn_algorithm
- * @param {string} number
+ * @param {string | number} value
  * @returns {boolean}
  */
 function isValidCcNumber(value) {
-  value = value.replace(/\D+/g, "");
+  value = value.toString().replace(/\D+/g, "");
 
   var lastDigit = value.slice(-1);
   value = value.slice(0, -1);
@@ -87,3 +97,4 @@ function sum(number) {
 
 exports.generateCcNumber = generateCcNumber;
 exports.isValidCcNumber = isValidCcNumber;
+exports.formatCcNumber = formatCcNumber;

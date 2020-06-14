@@ -21,7 +21,7 @@ generateCcNumber(1313, 16, true); // 1313 8291 8789 9580
 
 ```
 
-**generateCcNumber(prefix, length, [formatted = false])**
+**generateCcNumber(prefix: string | number, length: string | number, [formatted:boolean = false])**
 
 - _prefix_ - digits to be prepended to the final result;
 - _length_ - length of the final result, including the prefix;
@@ -33,11 +33,21 @@ generateCcNumber(1313, 16, true); // 1313 8291 8789 9580
 ```
 import { isValidCcNumber } from "optima-ccgen";
 
-isValidCcNumber('1313829187899580'); // true
+isValidCcNumber(1313829187899580); // true
 ```
 
-**isValidCcNumber(number)**
+**isValidCcNumber(value: string | number)**
 
-- _number_ - numeric sequence to be validated against Luhn algorythm.
+- _value_ - numeric sequence to be validated against Luhn algorythm.
   If a formatted number is passed as argument, empty spaces will be
   removed and then the result will be validated.
+
+## Format string as credit card number
+
+```
+import { formatCcNumber } from 'optima-ccgen';
+```
+
+**formatCcNumber(value: string | number)**
+
+- _value_ - value to be formatted.
