@@ -1,6 +1,6 @@
 {
   "name": "optima-ccgen",
-  "version": "0.0.16",
+  "version": "0.1.0",
   "description": "Credit card number generator and validator",
   "scripts": {
     "build": "tsc",
