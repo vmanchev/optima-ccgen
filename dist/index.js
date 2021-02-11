@@ -1,3 +1,6 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isValidCcNumber = exports.formatCcNumber = exports.generateCcNumber = void 0;
 /**
  * Generates a credit card number
  *
@@ -12,21 +15,23 @@
  * be formatted with a space after every 4 characters or not.
  * @returns {string}
  */
-export function generateCcNumber(prefix, length, formatted) {
+function generateCcNumber(prefix, length, formatted) {
     if (formatted === void 0) { formatted = false; }
     var number = prefix + getRandomNumber(length - prefix.length);
     var ccNumber = number + verificationDigit(number);
     return formatted ? formatCcNumber(ccNumber) : ccNumber;
 }
+exports.generateCcNumber = generateCcNumber;
 /**
  * Inserts an empty space after every 4th element
  *
  * @param {string} value
  * @returns {string}
  */
-export function formatCcNumber(value) {
+function formatCcNumber(value) {
     return value.replace(/(.{4})/g, "$& ").trim();
 }
+exports.formatCcNumber = formatCcNumber;
 /**
  * Is valid credit card number
  *
@@ -36,12 +41,13 @@ export function formatCcNumber(value) {
  * @param {string} value
  * @returns {boolean}
  */
-export function isValidCcNumber(value) {
+function isValidCcNumber(value) {
     value = value.replace(/\D+/g, "");
     var lastDigit = parseInt(value.slice(-1), 10);
     value = value.slice(0, -1);
     return verificationDigit(value) == lastDigit;
 }
+exports.isValidCcNumber = isValidCcNumber;
 function multiplyNumber(value) {
     var result = value * 2;
     return result > 9 ? result - 9 : result;
